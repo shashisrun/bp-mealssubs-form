@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
+import { FaWeight, FaBicycle, FaDumbbell } from "react-icons/fa";
 
 export default function AskGoal() {
     const [goal, setGoal] = React.useState('');

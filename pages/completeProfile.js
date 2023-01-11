@@ -100,7 +100,6 @@ export default function CompleteProfile() {
                 setShowComponent(() => {
                     return (
                         <>
-                            <ImageViewer src={successfull} width={1080} height={1080} classname='w-full' />
                             
                                 Your profile registration is complete
                             

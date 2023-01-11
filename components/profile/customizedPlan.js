@@ -52,9 +52,8 @@ export default function CustomizedPlan({plan, onClick}) {
                 </> : <></>}
                 {protein ? <>
                     <div className='my-2'>
-                        <Title>
+
                             {`Your Total is ₹${duration.days * mealsPerDay * (protein.mealPrice + (protein.addonPrice * addonProtein) + (plan.carbs.addonPrice * addonCarb)) }`}
-                        </Title>
                     </div>
                     <div className="my-2">
                         <button className="btn btn-primary w-full" onClick={() => {
