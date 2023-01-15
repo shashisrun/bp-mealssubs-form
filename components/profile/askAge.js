@@ -10,12 +10,15 @@ export default function AskAge() {
     return (
         <>
             <div className="my-2">
-                
-                    Your age is?
-                <input type="text" placeholder="Enter your age" className="input input-bordered w-full"
-                    value={age}
-                    onChange={(event) => setAge(event.target.value)}
-                />
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Your age is?</span>
+                    </label>
+                    <input type="text" placeholder="Enter your age" className="input input-bordered w-full"
+                        value={age}
+                        onChange={(event) => setAge(event.target.value)}
+                    />
+                </div>
             </div>
             <div className="my-1">
                 {error}

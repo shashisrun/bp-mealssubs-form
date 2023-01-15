@@ -12,8 +12,13 @@ export default function AskVegDays() {
     ];
     return (
         <>
-            
-                Do you have any vegetarian days?, if yes select below or click next
+            <div className="form-control w-full max-w-xs">
+                <label className="label">
+                    <span className="label-text">
+                        Do you have any vegetarian days?, if yes select below or click next
+                    </span>
+                </label>
+            </div>
             
             <div className="form-control">
                 {days.map((day, index) => {

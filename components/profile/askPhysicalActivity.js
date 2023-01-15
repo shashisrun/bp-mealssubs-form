@@ -11,9 +11,13 @@ export default function AskPhysicalActivity() {
     return (
         <>
             <div className="my-2">
-               
-                    Your Physical Activity (Steps per Day)
-                
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">
+                            Your Physical Activity (Steps per Day)
+                        </span>
+                    </label>
+                </div>
                 <div className="my-1">
                     <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="low">{`Low (< 2500)`}</label>
                     <input type="radio" name="physicalActivity" className="radio radio-accent" hidden id="low" onClick={(event) => setPhysicalActivity('Low (< 2500)')} />

@@ -10,11 +10,17 @@ export default function AskHeight() {
     return (
         <>
             <div className="my-2">
-                    Your Height?
-                <input type="text" placeholder="Enter your height (cm)" className="input w-full bg-secondary"
-                    value={height}
-                    onChange={(event) => setHeight(event.target.value)}
-                />
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">
+                            Your Height?
+                        </span>
+                    </label>
+                    <input type="text" placeholder="Enter your height (cm)" className="input w-full bg-secondary"
+                        value={height}
+                        onChange={(event) => setHeight(event.target.value)}
+                    />
+                </div>
             </div>
             <div className="my-1">
                 {error}

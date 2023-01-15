@@ -11,8 +11,14 @@ export default function AskGoal() {
     return (
         <>
             <div className="my-2">
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">
+                            Your Goal is to
+                        </span>
+                    </label>
+                </div>
                 
-                    Your Goal is to
                 
                 <div className="my-1">
                     <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="dropfat">

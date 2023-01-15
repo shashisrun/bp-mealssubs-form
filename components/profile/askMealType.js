@@ -11,7 +11,13 @@ export default function AskMealType() {
     return (
         <>
             <div className="my-2">
-                    You are
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">
+                            You are?
+                        </span>
+                    </label>
+                </div>
                 <div className="my-1">
                     <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="vegetarian">
                         <FaAppleAlt size={24} />

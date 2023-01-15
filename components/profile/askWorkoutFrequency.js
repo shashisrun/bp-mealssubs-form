@@ -11,8 +11,14 @@ export default function AskWorkoutFrequency() {
     return (
         <>
             <div className="my-2">
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">
+                            How many times do you train in a gym per week?
+                        </span>
+                    </label>
+                </div>
               
-                    How many times do you train in a gym per week?
                
                 <div className="my-3">
                     <input type="range" min="0" max="7" value={workoutFrequency} className="range" step="1" onChange={(event) => setWorkoutFrequency(parseInt(event.target.value))} />

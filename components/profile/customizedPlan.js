@@ -13,9 +13,13 @@ export default function CustomizedPlan({plan, onClick}) {
     console.log(plan);
     return (
         <>
-           
-                Create your own plan!
-           
+            <div className="form-control w-full max-w-xs">
+                <label className="label">
+                    <span className="label-text">
+                        Create your own plan!
+                    </span>
+                </label>
+            </div>
             <div className="my-3">
                 <div className='my-2'>
                     <select className="select w-full select-primary" onChange={(event) => setDuration(plan.durations.filter((duration) => event.target.value == duration.days)[0])}>

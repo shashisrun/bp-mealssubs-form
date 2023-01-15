@@ -11,13 +11,18 @@ export default function AskWeight() {
     return (
         <>
             <div className="my-2">
-                
-                    Your weight?
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">
+                            Your weight?
+                        </span>
+                    </label>
+                    <input type="text" placeholder="Enter your weight (kg)" className="input w-full bg-secondary"
+                        value={weight}
+                        onChange={(event) => setWeight(event.target.value)}
+                    />
+                </div>
                
-                <input type="text" placeholder="Enter your weight (kg)" className="input w-full bg-secondary"
-                    value={weight}
-                    onChange={(event) => setWeight(event.target.value)}
-                />
             </div>
             <div className="my-1">
                 {error}

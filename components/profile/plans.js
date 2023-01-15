@@ -91,9 +91,13 @@ export default function Plans() {
     return (
         <>
             <div className="my-2">
-               
-                    Select a Plan
-              
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">
+                            Select a Plan
+                        </span>
+                    </label>
+                </div>
                 <div className="my-3">
                     {plans.map((plan, index) => {
                         return(
