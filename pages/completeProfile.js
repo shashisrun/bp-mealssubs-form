@@ -21,7 +21,7 @@ export default function CompleteProfile() {
         return (
             <>
                 <div className="w-full h-full">
-                    <progress class="progress w-2/3"></progress>
+                    <progress className="progress w-2/3"></progress>
                 </div>
             </>
         )
