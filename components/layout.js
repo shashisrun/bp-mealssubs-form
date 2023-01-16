@@ -18,8 +18,8 @@ export default function Layout({children}) {
                                 <div className="md:h-1/3 h-full md:w-full w-1/2">
                                     <div className="md:p-5 p-2 md:text-center text-left">
                                         <Image src={'/assets/logo_white.png'} alt="BodyPower" width={826} height={415} className="w-1/2 md:w-1/3 md:mx-auto my-5" />
-                                        <h1 className="md:text-3xl text-xl font-bold">Lorem Ipsum</h1>
-                                        <p className="md:text-xl">Reference site about Lorem Ipsum, giving information on its origins, as well as a random</p>
+                                        <h1 className="md:text-3xl text-xl font-bold">Start your Nutritionally Balanced meal plan!</h1>
+                                        {/* <p className="md:text-xl">Reference site about Lorem Ipsum, giving information on its origins, as well as a random</p> */}
                                     </div>
                                 </div>
                                 <div className="md:h-2/3 h-full md:w-full w-1/2">
