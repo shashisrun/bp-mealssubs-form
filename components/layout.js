@@ -10,7 +10,7 @@ export default function Layout({children}) {
             <main className="h-screen bg-accent pt-[10vh]">
                 <div className="container-fluid md:mx-10 mx-2 h-full">
                     <div className="flex md:flex-row flex-col w-full rounded-box overflow-hidden h-[80vh] shadow-2xl">
-                        <div className="md:w-3/5 w-full bg-base-100 md:border-l-[16px] md:border-b-0 border-b-[16px] border-secondary md:order-1 order-2 flex-grow">
+                        <div className="md:w-3/5 w-full bg-base-100 md:border-l-[16px] md:border-b-0 border-b-[16px] border-secondary md:order-1 order-2 flex-grow overflow-y-auto">
                             <div className="pt-[10%]">
                                 {children}
                             </div>
