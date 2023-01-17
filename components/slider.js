@@ -5,9 +5,37 @@ export default function Slider(){
     let timer;
     const slides = [
         {
-            url: '/assets/meals/pasta.png',
-            alt: 'plate'
-        }
+            url: '/assets/meals/egg.png',
+            alt: 'Egg Meal'
+        },
+        {
+            url: '/assets/meals/fruitSalad.png',
+            alt: 'Fruit Salad'
+        },
+        {
+            url: '/assets/meals/omelette.png',
+            alt: 'Omelette'
+        },
+        {
+            url: '/assets/meals/salad1.png',
+            alt: 'Salad'
+        },
+        {
+            url: '/assets/meals/paneer1.png',
+            alt: 'Paneer'
+        },
+        {
+            url: '/assets/meals/salad2.png',
+            alt: 'Salad'
+        },
+        {
+            url: '/assets/meals/paneer2.png',
+            alt: 'Paneer'
+        },
+        {
+            url: '/assets/meals/salad3.png',
+            alt: 'Salad'
+        },
     ]
 
     const updateCount = () => {
@@ -42,7 +70,7 @@ export default function Slider(){
                 {slides.map((slide, index) => {
                     return(
                         <li key={index} className="carousel-item w-full" id={`carousel-${index}`}>
-                            <Image src={slide.url} alt={slide.alt} className="w-full" width={490} height={510} />
+                            <Image src={slide.url} alt={slide.alt} className="w-full" width={1080} height={1080} />
                         </li>
                     )
                 })}
@@ -50,7 +78,7 @@ export default function Slider(){
             <div className="md:flex justify-center w-full py-2 gap-2 hidden">
                 {slides.map((slide, index) => {
                     return (
-                        <a key={index} index={index} href={`#carousel-${index}`} onClick={handleClick} className="w-4 h-4 bg-primary rounded-full"></a>
+                        <a key={index} index={index} href={`#carousel-${index}`} onClick={handleClick} className="w-2 h-2 bg-primary rounded-full"></a>
                     )
                 })}
             </div>
