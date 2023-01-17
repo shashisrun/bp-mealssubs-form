@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
 import { FaAppleAlt, FaFish, FaEgg } from "react-icons/fa";
+import Title from "../title";
 
 export default function AskMealType() {
     const [mealType, setMealType] = React.useState('');
@@ -14,12 +15,12 @@ export default function AskMealType() {
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            You are?
+                            <Title text={"Which meal type you prefer"} />
                         </span>
                     </label>
                 </div>
                 <div className="my-1">
-                    <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="vegetarian">
+                    <label className={`btn btn-ghost py-1 ${mealType === 'vegetarian' ? 'bg-primary text-accent' : 'bg-accent'} hover:bg-primary w-full`} htmlFor="vegetarian">
                         <FaAppleAlt size={24} />
                         <span className="mx-2">
                             Vegetarian
@@ -28,7 +29,7 @@ export default function AskMealType() {
                     <input type="radio" name="mealType" className="radio radio-accent" hidden id="vegetarian" onClick={(event) => setMealType('vegetarian')} />
                 </div>
                 <div className="my-1">
-                    <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="eggiterian">
+                    <label className={`btn btn-ghost py-1 ${mealType === 'eggiterian' ? 'bg-primary text-accent' : 'bg-accent'} hover:bg-primary w-full`} htmlFor="eggiterian">
                         <FaEgg size={24} />
                         <span className="mx-2">
                             Eggiterian
@@ -37,7 +38,7 @@ export default function AskMealType() {
                     <input type="radio" name="mealType" className="radio radio-accent" hidden id="eggiterian" onClick={(event) => setMealType('eggiterian')} />
                 </div>
                 <div className="my-1">
-                    <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="non-vegetarian">
+                    <label className={`btn btn-ghost py-1 ${mealType === 'non-vegetarian' ? 'bg-primary text-accent' : 'bg-accent'} hover:bg-primary w-full`} htmlFor="non-vegetarian">
                         <FaFish size={24} />
                         <span className="mx-2">
                             Non Vegetarian

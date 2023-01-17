@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
+import Title from "../title";
 
 export default function AskHeight() {
     const [height, setHeight] = React.useState('');
@@ -13,10 +14,10 @@ export default function AskHeight() {
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            Your Height?
+                            <Title text={"What is your height"} />
                         </span>
                     </label>
-                    <input type="text" placeholder="Enter your height (cm)" className="input w-full bg-secondary"
+                    <input type="text" placeholder="Enter your height (cm)" className="input input-bordered w-full"
                         value={height}
                         onChange={(event) => setHeight(event.target.value)}
                     />

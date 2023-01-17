@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
+import Title from "../title";
 
 
 export default function AskVegDays() {
@@ -12,10 +13,10 @@ export default function AskVegDays() {
     ];
     return (
         <>
-            <div className="form-control w-full max-w-xs">
+            <div className="form-control w-full">
                 <label className="label">
                     <span className="label-text">
-                        Do you have any vegetarian days?, if yes select below or click next
+                        <Title text={'Do you have any vegetarian days?, if yes select below or click next'} />
                     </span>
                 </label>
             </div>

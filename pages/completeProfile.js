@@ -120,18 +120,18 @@ export default function CompleteProfile() {
     return (
         <>
             <div className='max-w-lg mx-auto'>
+            {currentStep > 0 ? <>
+                <div className='my-5'>
+                    <button className='btn btn-accent' onClick={() => {
+                        let data = {}
+                        data[steps[currentStep - 1]] = deleteField();
+                        updateDocument('users', data, user.uid).then(() => {
+                            getDocument('users', user.uid).then((data) => setUser({ ...user, profile: {...data} }))
+                        })
+                    }}> &lt; Go Back</button>
+                </div>
+            </> : <></>}
                 {showComponet}
-                {currentStep > 0 ? <>
-                    <div className='my-5'>
-                        <button className='btn btn-secondary w-full' onClick={() => {
-                            let data = {}
-                            data[steps[currentStep - 1]] = deleteField();
-                            updateDocument('users', data, user.uid).then(() => {
-                                getDocument('users', user.uid).then((data) => setUser({ ...user, profile: {...data} }))
-                            })
-                        }}>Go Back</button>
-                    </div>
-                </> : <></>}
             </div>
         </>
     )

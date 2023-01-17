@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
 import { FaWeight, FaBicycle, FaDumbbell } from "react-icons/fa";
+import Title from "../title";
 
 export default function AskGoal() {
     const [goal, setGoal] = React.useState('');
@@ -14,14 +15,14 @@ export default function AskGoal() {
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            Your Goal is to
+                            <Title text={"Your goal is"} />
                         </span>
                     </label>
                 </div>
                 
                 
                 <div className="my-1">
-                    <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="dropfat">
+                    <label className={`btn btn-ghost py-1 ${goal === 'Drop Body Fat' ? 'bg-primary text-accent' : 'bg-accent'} hover:bg-primary w-full`} htmlFor="dropfat">
                         <FaWeight size={24} />
                         <span className="mx-2">
                         Drop Body Fat
@@ -30,7 +31,7 @@ export default function AskGoal() {
                     <input type="radio" name="goal" className="radio radio-accent" hidden id="dropfat" onClick={(event) => setGoal('Drop Body Fat')} />
                 </div>
                 <div className="my-1">
-                    <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="addmuscle">
+                    <label className={`btn btn-ghost py-1 ${goal === 'Add Muscle' ? 'bg-primary text-accent' : 'bg-accent'} hover:bg-primary w-full`} htmlFor="addmuscle">
                         <FaDumbbell size={24} />
                         <span className="mx-2">
                         Add Muscle
@@ -39,7 +40,7 @@ export default function AskGoal() {
                     <input type="radio" name="goal" className="radio radio-accent" hidden id="addmuscle" onClick={(event) => setGoal('Add Muscle')} />
                 </div>
                 <div className="my-1">
-                    <label className="btn btn-default py-1 bg-secondary hover:bg-primary w-full" htmlFor="maintain">
+                    <label className={`btn btn-ghost py-1 ${goal === 'Maintain' ? 'bg-primary text-accent' : 'bg-accent'} hover:bg-primary w-full`} htmlFor="maintain">
                         <FaBicycle size={24} />
                         <span className="mx-2">
                         Maintain

@@ -11,7 +11,9 @@ export default function Layout({children}) {
                 <div className="container-fluid md:mx-10 mx-2 h-full">
                     <div className="flex md:flex-row flex-col w-full rounded-box overflow-hidden h-[80vh] shadow-2xl">
                         <div className="md:w-3/5 w-full bg-base-100 md:border-l-[16px] md:border-b-0 border-b-[16px] border-secondary md:order-1 order-2 flex-grow">
-                            {children}
+                            <div className="pt-[10%]">
+                                {children}
+                            </div>
                         </div>
                         <div className="md:w-2/5 md:h-full h-64 bg-secondary bg-[url('/assets/background.png')] bg-cover bg-center md:order-2 order-1 text-white">
                             <div className="h-full w-full flex flex-row md:flex-col">

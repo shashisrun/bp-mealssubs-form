@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
+import Title from "../title";
 
 export default function AskAge() {
     const [age, setAge] = React.useState('');
@@ -12,7 +13,9 @@ export default function AskAge() {
             <div className="my-2">
                 <div className="form-control w-full">
                     <label className="label">
-                        <span className="label-text">Your age is?</span>
+                        <span className="label-text">
+                            <Title text="What is your age" />
+                        </span>
                     </label>
                     <input type="text" placeholder="Enter your age" className="input input-bordered w-full"
                         value={age}

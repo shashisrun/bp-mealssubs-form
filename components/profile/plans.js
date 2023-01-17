@@ -4,6 +4,7 @@ import { addDocument, addNamedDocument, getDocument, getDocuments, updateDocumen
 import razorpayPayment from '../../utils/razorpayPayment'
 
 import CustomizedPlan from "./customizedPlan";
+import Title from "../title";
 
 export default function Plans() {
     const [plans, setPlans] = React.useState([]);
@@ -91,10 +92,10 @@ export default function Plans() {
     return (
         <>
             <div className="my-2">
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            Select a Plan
+                            <Title text={'Select your prefered plan'} />
                         </span>
                     </label>
                 </div>

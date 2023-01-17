@@ -13,7 +13,7 @@ export default function CustomizedPlan({plan, onClick}) {
     console.log(plan);
     return (
         <>
-            <div className="form-control w-full max-w-xs">
+            <div className="form-control w-full">
                 <label className="label">
                     <span className="label-text">
                         Create your own plan!

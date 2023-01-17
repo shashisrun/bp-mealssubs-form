@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
+import Title from "../title";
 
 
 export default function AskWeight() {
@@ -11,13 +12,13 @@ export default function AskWeight() {
     return (
         <>
             <div className="my-2">
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            Your weight?
+                            <Title text={'What is your weight'} />
                         </span>
                     </label>
-                    <input type="text" placeholder="Enter your weight (kg)" className="input w-full bg-secondary"
+                    <input type="text" placeholder="Enter your weight (kg)" className="input input-bordered w-full"
                         value={weight}
                         onChange={(event) => setWeight(event.target.value)}
                     />

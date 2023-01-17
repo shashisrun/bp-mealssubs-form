@@ -3,9 +3,10 @@ import Router from 'next/router'
 import { useAuth } from '../contexts/authContext'
 import { setUpRecaptcha, addNamedDocument, getDocument, serverTimestamp } from '../config/firebase';
 import AskName from '../components/profile/askName';
+import Title from '../components/title';
 
 export default function Home() {
-    const [phone, setPhone] = React.useState('');
+    const [phone, setPhone] = React.useState('+91');
     const [confirmObject, setConfirmObject] = React.useState(null);
     const [otp, setOtp] = React.useState('');
     const [error, setError] = React.useState();
@@ -23,7 +24,7 @@ export default function Home() {
         event.preventDefault();
         // setSentOtp(true)
         try {
-            const reponse = await setUpRecaptcha(`+91${phone}`)
+            const reponse = await setUpRecaptcha(phone)
             setConfirmObject(reponse);
         } catch (error) {
             setError(error.message);
@@ -76,13 +77,15 @@ export default function Home() {
                                 <div className="my-2">
                                     <div className="form-control">
                                         <label className="label">
-                                            <span className="label-text">What is your phone number?</span>
+                                            <span className="label-text">
+                                                <Title text={"What is your phone number?"} />
+                                            </span>
                                         </label>
                                         <input type="text" placeholder="Enter your phone" className="input input-bordered w-full bg-base-100 text-primary"
                                             value={phone}
                                             onChange={(event) => {
                                                 const re = /^[0-9\b]+$/;
-                                                if ((event.target.value === '' || re.test(event.target.value)) && event.target.value.length <= 10) {
+                                                if ((event.target.value.split("+")[1] === '' || re.test(event.target.value.split("+")[1])) && event.target.value.length <= 13) {
                                                     setPhone(event.target.value)
                                                 }
                                             }}
@@ -107,7 +110,9 @@ export default function Home() {
                                 <div className="my-2">
                                     <div className="form-control">
                                         <label className="label">
-                                            <span className="label-text">Please provide OTP</span>
+                                            <span className="label-text">
+                                                <Title text={"Please provide OTP"} />
+                                            </span>
                                         </label>
                                         <input type="text" placeholder="Enter OTP" className="input input-bordered w-full bg-base-100 text-primary"
                                             value={otp}
@@ -134,7 +139,7 @@ export default function Home() {
                     </div>
                     :
                     <>
-                        {!user.profile.name
+                        {user.profile && !user.profile.name
                             ? <AskName />
                             : <></>
                         }

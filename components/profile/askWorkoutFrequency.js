@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
+import Title from "../title";
 
 
 export default function AskWorkoutFrequency() {
@@ -11,10 +12,10 @@ export default function AskWorkoutFrequency() {
     return (
         <>
             <div className="my-2">
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            How many times do you train in a gym per week?
+                            <Title text={'How many times do you train in a gym per week?'} />
                         </span>
                     </label>
                 </div>

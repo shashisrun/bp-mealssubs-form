@@ -5,29 +5,9 @@ export default function Slider(){
     let timer;
     const slides = [
         {
-            url: '/assets/plate.png',
+            url: '/assets/meals/pasta.png',
             alt: 'plate'
-        },
-        {
-            url: '/assets/plate.png',
-            alt: 'plate'
-        },
-        {
-            url: '/assets/plate.png',
-            alt: 'plate'
-        },
-        {
-            url: '/assets/plate.png',
-            alt: 'plate'
-        },
-        {
-            url: '/assets/plate.png',
-            alt: 'plate'
-        },
-        {
-            url: '/assets/plate.png',
-            alt: 'plate'
-        },
+        }
     ]
 
     const updateCount = () => {
@@ -43,13 +23,9 @@ export default function Slider(){
 
     const handleClick = (event) => {
         event.preventDefault();
-        console.log(counter)
-        console.log(document.querySelector(`[href="#carousel-${counter}"]`));
         document.querySelector(`[href="#carousel-${counter}"]`).classList.remove('bg-accent')
         document.querySelector(`[href="#carousel-${counter}"]`).classList.add('bg-primary')
         counter = parseInt(event.target.getAttribute('index'));
-        console.log(counter)
-        console.log(event.target);
         event.target.classList.add('bg-accent');
         event.target.classList.remove('bg-primary');
         document.getElementById(`carousel-${counter}`).scrollIntoView();
@@ -66,7 +42,7 @@ export default function Slider(){
                 {slides.map((slide, index) => {
                     return(
                         <li key={index} className="carousel-item w-full" id={`carousel-${index}`}>
-                            <Image src={slide.url} alt={slide.alt} className="w-full" width={1080} height={1080} />
+                            <Image src={slide.url} alt={slide.alt} className="w-full" width={490} height={510} />
                         </li>
                     )
                 })}
