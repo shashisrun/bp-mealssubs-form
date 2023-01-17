@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
-import { addDocument, addNamedDocument, getDocument, getDocuments, updateDocument } from "../../config/firebase";
+import { addDocument, addNamedDocument, getDocument, getDocuments, updateDocument, where } from "../../config/firebase";
 import razorpayPayment from '../../utils/razorpayPayment'
 
 import CustomizedPlan from "./customizedPlan";
@@ -13,10 +13,12 @@ export default function Plans() {
     const { user, setUser } = useAuth();
 
     React.useEffect(() => {
-        if (!plans.length)
-        getDocuments('plans').then((data) => {
-            setPlans(data);
-        });
+        if (!plans.length) {
+            const query = where('status', '==', true)
+            getDocuments('plans', query).then((data) => {
+                setPlans(data);
+            }); 
+        }
     }, [plans])
 
     const createOrder = (customizedPlan) => {
@@ -34,8 +36,10 @@ export default function Plans() {
                 userId: user.uid,
             }
         }
+        console.log('data', selectedPlan)
         addDocument('orders', data).then(async (res) => {
-            let order = await fetch('/createOrder', {
+            console.log(res)
+            let order = await fetch('/api/createOrder', {
                 method: 'POST',
                 body: JSON.stringify(res)
             })
@@ -95,7 +99,7 @@ export default function Plans() {
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">
-                            <Title text={'Select your prefered plan'} />
+                            <Title text={'Select your preferred plan'} />
                         </span>
                     </label>
                 </div>
@@ -114,7 +118,7 @@ export default function Plans() {
                                             <p>{plan.description}</p>
                                             <div className="flex flex-row items-center flex-wrap">
                                                 <button className="btn btn-primary mx-2 my-2"
-                                                    onClick={createOrder}
+                                                    onClick={() => {createOrder()}}
                                                 >
                                                     {`INR ${plan.price} per ${plan.duration} days`}
                                                 </button>
