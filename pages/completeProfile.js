@@ -13,6 +13,7 @@ import AskVegDays from '../components/profile/askVegDays';
 import { addNamedDocument, getDocument, updateDocument, deleteField } from "../config/firebase";
 import AskAge from '../components/profile/askAge';
 import { useRouter } from "next/router";
+import Title from '../components/title';
 
 export default function CompleteProfile() {
     const { user, setUser } = useAuth();
@@ -100,11 +101,12 @@ export default function CompleteProfile() {
                 setShowComponent(() => {
                     return (
                         <>
-                            
-                                Your profile registration is complete
+                            <h1 className='text-2xl text-center font-bold'>{`Thank you for buying ${user.profile.activePlan.name} of INR ${user.profile.activePlan.price}, your plan for ${user.profile.activePlan.duration} day(s) is active now.`}</h1>
+                            <p className='text-l text-center'>Our team will connect with you and guide you in your diet journey.</p>
+                            <p className='text-l text-center'>You can also call us on +917391089755 or e-mail us at cafe.delivery@bodypower.com for any further query.</p>
                             
                             <button
-                                className='btn btn-primary w-full'
+                                className='btn btn-primary w-full my-3'
                                 onClick={(event) => {
                                     event.preventDefault()
                                     router.push('/')
@@ -116,10 +118,10 @@ export default function CompleteProfile() {
             }
         }
     }, [user]);
-    
+
     return (
         <>
-            <div className='max-w-lg mx-auto'>
+            <div className='max-w-lg mx-auto px-3'>
             {currentStep > 0 ? <>
                 <div className='my-5'>
                     <button className='btn btn-accent' onClick={() => {

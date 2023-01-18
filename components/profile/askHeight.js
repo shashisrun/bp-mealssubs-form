@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "../../contexts/authContext";
 import { addNamedDocument, getDocument } from "../../config/firebase";
 import Title from "../title";
+import Image from "next/image";
 
 export default function AskHeight() {
     const [height, setHeight] = React.useState('');
@@ -48,6 +49,9 @@ export default function AskHeight() {
                     }
                 >Next</button>
             </div>
+            {/* <div className="my-5">
+                <Image src={'/assets/height.png'} width={1080} height={1080} className="w-64 mx-auto" />
+            </div> */}
         </>
     )
 }

@@ -36,9 +36,7 @@ export default function Plans() {
                 userId: user.uid,
             }
         }
-        console.log('data', selectedPlan)
         addDocument('orders', data).then(async (res) => {
-            console.log(res)
             let order = await fetch('/api/createOrder', {
                 method: 'POST',
                 body: JSON.stringify(res)
@@ -65,9 +63,6 @@ export default function Plans() {
                 console.log(response)
 
                 if (response.razorpay_payment_id) {
-                    alert(res.id)
-                    console.log('res')
-                    console.log(res)
                     updateDocument('orders', {
                         isSuccessfull: true,
                         razorPayId: response.razorpay_payment_id,
