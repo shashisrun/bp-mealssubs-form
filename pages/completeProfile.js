@@ -105,13 +105,7 @@ export default function CompleteProfile() {
                             <p className='text-l text-center'>Our team will connect with you and guide you in your diet journey.</p>
                             <p className='text-l text-center'>You can also call us on +917391089755 or e-mail us at cafe.delivery@bodypower.com for any further query.</p>
                             
-                            <button
-                                className='btn btn-primary w-full my-3'
-                                onClick={(event) => {
-                                    event.preventDefault()
-                                    router.push('/')
-                                }}
-                            >Go to home</button>
+                            <a href='https://www.bodypower.com/' className='btn btn-primary w-full my-3'>Go to home</a>
                         </>
                     )
                 })
