@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../contexts/authContext';
+import AsskCurrentLocation from '../components/profile/askCurrentLocation';
 import AskGender from '../components/profile/askGender';
 import AskHeight from '../components/profile/askHeight';
 import AskWeight from '../components/profile/askWeight';
@@ -30,6 +31,7 @@ export default function CompleteProfile() {
     const router = useRouter();
 
     const steps = [
+        'currentLocation',
         'gender',
         'age',
         'height',
@@ -63,37 +65,40 @@ export default function CompleteProfile() {
             console.log(profileFields)
             if (!profileFields.includes(steps[0])) {
                 setCurrentStep(0);
-                setShowComponent(() => <AskGender />)
-            }
+                setShowComponent(() => <AsskCurrentLocation />)}
             else if (!profileFields.includes(steps[1])) {
                 setCurrentStep(1);
-                setShowComponent(() => <AskAge />)}
+                setShowComponent(() => <AskGender />)
+            }
             else if (!profileFields.includes(steps[2])) {
                 setCurrentStep(2);
-                setShowComponent(() => <AskHeight />)}
+                setShowComponent(() => <AskAge />)}
             else if (!profileFields.includes(steps[3])) {
                 setCurrentStep(3);
-                setShowComponent(() => <AskWeight />)}
+                setShowComponent(() => <AskHeight />)}
             else if (!profileFields.includes(steps[4])) {
                 setCurrentStep(4);
-                setShowComponent(() => <ShowBMI />)}
+                setShowComponent(() => <AskWeight />)}
             else if (!profileFields.includes(steps[5])) {
                 setCurrentStep(5);
-                setShowComponent(() => <AskGoal />)}
+                setShowComponent(() => <ShowBMI />)}
             else if (!profileFields.includes(steps[6])) {
                 setCurrentStep(6);
-                setShowComponent(() => <AskPhysicalActivity />)}
+                setShowComponent(() => <AskGoal />)}
             else if (!profileFields.includes(steps[7])) {
                 setCurrentStep(7);
-                setShowComponent(() => <AskWorkoutFrequency />)}
+                setShowComponent(() => <AskPhysicalActivity />)}
             else if (!profileFields.includes(steps[8])) {
                 setCurrentStep(8);
-                setShowComponent(() => <AskMealType />)}
-            else if (user.profile.mealType !== 'vegetarian' && !profileFields.includes(steps[9])) {
+                setShowComponent(() => <AskWorkoutFrequency />)}
+            else if (!profileFields.includes(steps[9])) {
                 setCurrentStep(9);
-                setShowComponent(() => <AskVegDays />)}
-            else if (!profileFields.includes(steps[10])) {
+                setShowComponent(() => <AskMealType />)}
+            else if (user.profile.mealType !== 'vegetarian' && !profileFields.includes(steps[10])) {
                 setCurrentStep(10);
+                setShowComponent(() => <AskVegDays />)}
+            else if (!profileFields.includes(steps[11])) {
+                setCurrentStep(11);
                 setShowComponent(() => <Plans />)}
             else {
                 completeProfile();
