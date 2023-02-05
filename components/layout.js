@@ -6,7 +6,7 @@ import Slider from "./slider";
 export default function Layout({children}) {
     return (
         <>
-            {/* <Header /> */}
+            <Header />
             <main className="h-screen bg-accent pt-[10vh]">
                 <div className="container-fluid md:mx-10 mx-2 h-full bg-[url('/assets/bodybg.png')] bg-cover bg-center">
                     <div className="flex md:flex-row flex-col w-full rounded-box overflow-hidden h-[80vh] shadow-2xl">
