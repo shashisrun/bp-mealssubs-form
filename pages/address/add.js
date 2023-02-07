@@ -177,7 +177,7 @@ function AddAddress() {
                                 message: 'Your address is saved'
                             })
                             setUser({ ...user, profile: profile });
-                            router.push('/address')
+                            router.back()
                         } catch (error) {
                             console.log(error);
                         }
