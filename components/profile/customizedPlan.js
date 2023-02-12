@@ -28,8 +28,9 @@ export default function CustomizedPlan({plan, onClick}) {
                     </select>
                 </div>
                 <div className='my-2'>
-                    <select className="select w-full select-primary" onChange={(event) => setMealsPerDay(event.target.value)}>
-                        {plan.mealsPerDay.map((meal, index) => <option value={meal} key={index}>{meal} Meal per day</option>)}
+                    <select className="select w-full select-primary" onChange={(event) => setMealsPerDay(parseInt(event.target.value))}>
+                        <option disabled selected>Select your meal timing</option>
+                        {plan.mealsPerDay.map((meal, index) => <option value={meal.mealCount} key={index}>{meal.title}</option>)}
                     </select>
                 </div>
                 <div className='my-2'>
@@ -57,6 +58,7 @@ export default function CustomizedPlan({plan, onClick}) {
                 {protein ? <>
                     <div className='my-2'>
 
+                            {`Your Total is ₹${duration.days} * ${mealsPerDay} * (${protein.mealPrice} + (${protein.addonPrice} * ${addonProtein}) + (${plan.carbs.addonPrice} * ${addonCarb})) }`}
                             {`Your Total is ₹${duration.days * mealsPerDay * (protein.mealPrice + (protein.addonPrice * addonProtein) + (plan.carbs.addonPrice * addonCarb)) }`}
                     </div>
                     <div className="my-2">

@@ -1,7 +1,8 @@
 import React from "react";
 import { useAuth } from "../../contexts/authContext";
-import { addDocument, addNamedDocument, getDocument, getDocuments, updateDocument, where } from "../../config/firebase";
+import { addDocument, getDocument, getDocuments, updateDocument, where } from "../../config/firebase";
 import razorpayPayment from '../../utils/razorpayPayment'
+import calorieCalculator from "../../utils/calorieCalculator";
 
 import CustomizedPlan from "./customizedPlan";
 import Title from "../title";
@@ -10,6 +11,7 @@ export default function Plans() {
     const [plans, setPlans] = React.useState([]);
     const [selectedPlan, setSelectedPlan] = React.useState();
     const [error, setError] = React.useState('');
+    const [calories, setCalories] = React.useState(0);
     const { user, setUser } = useAuth();
 
     React.useEffect(() => {
@@ -19,7 +21,12 @@ export default function Plans() {
                 setPlans(data);
             }); 
         }
-    }, [plans])
+        if (user && user.profile) {
+            setCalories(calorieCalculator(user.profile.gender === 'male' ? true : false, user.profile.weight, user.profile.height, user.profile.age, user.profile.physicalActivity))
+            console.clear()
+            console.log(calorieCalculator(user.profile.gender === 'male' ? true : false, user.profile.weight, user.profile.height, user.profile.age, user.profile.physicalActivity))
+        }
+    }, [plans, user])
 
     const createOrder = (customizedPlan) => {
         let data;
@@ -95,6 +102,7 @@ export default function Plans() {
                     <label className="label">
                         <span className="label-text">
                             <Title text={'Select your preferred plan'} />
+                            <Title text={`Calories needed, ${calories}`} />
                         </span>
                     </label>
                 </div>

@@ -2,8 +2,12 @@ import Image from "next/image";
 import Footer from "./footer";
 import Header from "./header";
 import Slider from "./slider";
+import { useLocation } from "../contexts/currentLocation";
+import { useDeliveryPrice } from "../contexts/deliveryPrice";
 
-export default function Layout({children}) {
+export default function Layout({ children }) {
+    const { location } = useLocation();
+    const { deliveryPrice } = useDeliveryPrice();
     return (
         <>
             <Header />
@@ -11,6 +15,24 @@ export default function Layout({children}) {
                 <div className="container-fluid md:mx-10 mx-2 h-full bg-[url('/assets/bodybg.png')] bg-cover bg-center">
                     <div className="flex md:flex-row flex-col w-full rounded-box overflow-hidden h-[80vh] shadow-2xl">
                         <div className="md:w-3/5 w-full bg-base-100 md:border-l-[16px] md:border-b-0 border-b-[16px] border-secondary md:order-1 order-2 flex-grow overflow-y-auto bg-[url('/assets/bodybg.png')] bg-cover bg-center">
+                            {location ?
+                                <>
+                                    Address: {location.house} {location.street}
+                                </>
+                                : <></>}
+                            {deliveryPrice ? <>
+                                <br></br>
+                                Delivery City : {deliveryPrice.city}
+                                <br></br>
+                                Delivery distance : {deliveryPrice.distance}
+                                <br></br>
+                                Delivery Price : {deliveryPrice.price}
+                                <br></br>
+                                Delivery From Kitchen : {deliveryPrice.kitchen}
+                                <br></br>
+
+
+                            </> : <></>}
                             <div className="md:pt-[25%] pt-[10%]">
                                 {children}
                             </div>

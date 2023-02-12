@@ -15,11 +15,13 @@ import { addNamedDocument, getDocument, updateDocument, deleteField } from "../c
 import AskAge from '../components/profile/askAge';
 import { useRouter } from "next/router";
 import Title from '../components/title';
+import { useDeliveryPrice } from '../contexts/deliveryPrice';
 
 export default function CompleteProfile() {
     const { user, setUser } = useAuth();
     const { location, setLocation } = useLocation();
     const [currentStep, setCurrentStep] = React.useState(-1)
+    const { deliveryPrice } = useDeliveryPrice();
     const [showComponet, setShowComponent] = React.useState(() => {
         return (
             <>
@@ -60,9 +62,6 @@ export default function CompleteProfile() {
             }
         }
         if (user) {
-            console.log(user.profile);
-            const profileFields = Object.keys(user.profile)
-            console.log(profileFields)
             if (!location) {
                 router.push({
                     pathname: '/address',
@@ -72,57 +71,86 @@ export default function CompleteProfile() {
                     }
                 })
             }
-            else if (!profileFields.includes(steps[0])) {
-                setCurrentStep(1);
-                setShowComponent(() => <AskGender />)
-            }
-            else if (!profileFields.includes(steps[1])) {
-                setCurrentStep(2);
-                setShowComponent(() => <AskAge />)}
-            else if (!profileFields.includes(steps[2])) {
-                setCurrentStep(3);
-                setShowComponent(() => <AskHeight />)}
-            else if (!profileFields.includes(steps[3])) {
-                setCurrentStep(4);
-                setShowComponent(() => <AskWeight />)}
-            else if (!profileFields.includes(steps[4])) {
-                setCurrentStep(5);
-                setShowComponent(() => <ShowBMI />)}
-            else if (!profileFields.includes(steps[5])) {
-                setCurrentStep(6);
-                setShowComponent(() => <AskGoal />)}
-            else if (!profileFields.includes(steps[6])) {
-                setCurrentStep(7);
-                setShowComponent(() => <AskPhysicalActivity />)}
-            else if (!profileFields.includes(steps[7])) {
-                setCurrentStep(8);
-                setShowComponent(() => <AskWorkoutFrequency />)}
-            else if (!profileFields.includes(steps[8])) {
-                setCurrentStep(9);
-                setShowComponent(() => <AskMealType />)}
-            else if (user.profile.mealType !== 'vegetarian' && !profileFields.includes(steps[9])) {
-                setCurrentStep(10);
-                setShowComponent(() => <AskVegDays />)}
-            else if (!profileFields.includes(steps[10])) {
-                setCurrentStep(11);
-                setShowComponent(() => <Plans />)}
-            else {
-                completeProfile();
-                setCurrentStep(-1);
+        if (deliveryPrice) {
+            if (deliveryPrice.price) {
+                    console.log(user.profile);
+                    const profileFields = Object.keys(user.profile)
+                    console.log(profileFields)
+                    if (!profileFields.includes(steps[0])) {
+                        setCurrentStep(1);
+                        setShowComponent(() => <AskGender />)
+                    }
+                    else if (!profileFields.includes(steps[1])) {
+                        setCurrentStep(2);
+                        setShowComponent(() => <AskAge />)}
+                    else if (!profileFields.includes(steps[2])) {
+                        setCurrentStep(3);
+                        setShowComponent(() => <AskHeight />)}
+                    else if (!profileFields.includes(steps[3])) {
+                        setCurrentStep(4);
+                        setShowComponent(() => <AskWeight />)}
+                    else if (!profileFields.includes(steps[4])) {
+                        setCurrentStep(5);
+                        setShowComponent(() => <ShowBMI />)}
+                    else if (!profileFields.includes(steps[5])) {
+                        setCurrentStep(6);
+                        setShowComponent(() => <AskGoal />)}
+                    else if (!profileFields.includes(steps[6])) {
+                        setCurrentStep(7);
+                        setShowComponent(() => <AskPhysicalActivity />)}
+                    else if (!profileFields.includes(steps[7])) {
+                        setCurrentStep(8);
+                        setShowComponent(() => <AskWorkoutFrequency />)}
+                    else if (!profileFields.includes(steps[8])) {
+                        setCurrentStep(9);
+                        setShowComponent(() => <AskMealType />)}
+                    else if (user.profile.mealType !== 'vegetarian' && !profileFields.includes(steps[9])) {
+                        setCurrentStep(10);
+                        setShowComponent(() => <AskVegDays />)}
+                    else if (!profileFields.includes(steps[10])) {
+                        setCurrentStep(11);
+                        setShowComponent(() => <Plans />)}
+                    else {
+                        completeProfile();
+                        setCurrentStep(-1);
+                        setShowComponent(() => {
+                            return (
+                                <>
+                                    <h1 className='text-2xl text-center font-bold'>{`Thank you for buying ${user.profile.activePlan.name} of INR ${user.profile.activePlan.price}, your plan for ${user.profile.activePlan.duration} day(s) is active now.`}</h1>
+                                    <p className='text-l text-center'>Our team will connect with you and guide you in your diet journey.</p>
+                                    <p className='text-l text-center'>You can also call us on +917391089755 or e-mail us at cafe.delivery@bodypower.com for any further query.</p>
+                                    
+                                    <a href='https://www.bodypower.com/' className='btn btn-primary w-full my-3'>Go to home</a>
+                                </>
+                            )
+                        })
+                    }
+            } else {
                 setShowComponent(() => {
+                    console.log(deliveryPrice)
                     return (
                         <>
-                            <h1 className='text-2xl text-center font-bold'>{`Thank you for buying ${user.profile.activePlan.name} of INR ${user.profile.activePlan.price}, your plan for ${user.profile.activePlan.duration} day(s) is active now.`}</h1>
-                            <p className='text-l text-center'>Our team will connect with you and guide you in your diet journey.</p>
-                            <p className='text-l text-center'>You can also call us on +917391089755 or e-mail us at cafe.delivery@bodypower.com for any further query.</p>
-                            
-                            <a href='https://www.bodypower.com/' className='btn btn-primary w-full my-3'>Go to home</a>
+                            <div className="w-full h-full">
+                                {deliveryPrice.errorMessage}
+                            </div>
                         </>
                     )
                 })
             }
+        } else {
+            setShowComponent(() => {
+                console.log(deliveryPrice)
+                return (
+                    <>
+                        <div className="w-full h-full">
+                            we are looking for kitchen around you
+                        </div>
+                    </>
+                )
+            })
         }
-    }, [user]);
+        }
+    }, [user, deliveryPrice]);
 
     return (
         <>
